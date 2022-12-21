@@ -1,18 +1,22 @@
 // Extend every interface to use recurring fields
-
-interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
+interface IBase {
+	id: string;
+}
+interface IUser extends IBase {
+	firstName: string;
+	lastName: string;
 }
 
-interface Post {
-  id: string;
-  title: string;
-  body: string;
+interface IPost extends IBase {
+	title: string;
+	body: string;
 }
 
-interface Comment {
-  id: string;
-  comment: string;
+interface IComment extends IBase {
+	comment: string;
 }
+
+const comment: IComment = {
+	id: "2",
+	comment: "Some comment",
+};
