@@ -33,3 +33,6 @@ export const getDefaultUserAndPosts = (): User & { posts: Post[] } => {
 const userAndPosts = getDefaultUserAndPosts();
 
 console.log(userAndPosts.posts[0]);
+
+// Another solution could be
+type IUserWithPosts = User & { posts: Post[] } & { age: number };
