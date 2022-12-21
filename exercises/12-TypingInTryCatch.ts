@@ -4,9 +4,13 @@ const tryCatchDemo = (state: "fail" | "succeed") => {
       throw new Error("Failure!");
     }
     // e is unknown, tell ts that this e is an error object.
-    // @ts-expect-error
   } catch (e) {
-    return e.message;
+    // Check if e is actually an error
+    if (e instanceof Error) {
+      return e.message;
+      //   Basically narrowing possible outcomes of e being something else and
+      // crashing in dev/prod.
+    }
   }
 };
 
