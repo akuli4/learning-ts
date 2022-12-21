@@ -4,3 +4,5 @@ export const getName = (params: { first: string; last: string }) => {
   }
   return params.first;
 };
+
+getName({ first: "Alan" });
