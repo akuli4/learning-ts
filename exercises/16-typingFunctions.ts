@@ -1,6 +1,7 @@
 /**
  * How do we type onFocusChange?
  */
+// A function type can be decalred this way
 // type = () => return type
 
 type FocusListener = (isFocused: boolean) => void;
