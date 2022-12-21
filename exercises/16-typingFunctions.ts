@@ -1,7 +1,11 @@
 /**
  * How do we type onFocusChange?
  */
-const addListener = (onFocusChange: unknown) => {
+// type = () => return type
+
+type FocusListener = (isFocused: boolean) => void;
+
+const addListener = (onFocusChange: FocusListener) => {
 	window.addEventListener("focus", () => {
 		onFocusChange(true);
 	});
