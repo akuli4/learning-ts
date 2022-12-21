@@ -5,8 +5,11 @@ interface User {
   isAdmin: boolean;
 }
 
-const defaultUser = {
+const defaultUser: User = {
   id: 1,
+  firstName: "Luke",
+  lastName: "Skywalker",
+  isAdmin: false,
 };
 
 const getUserId = (user: User) => {
