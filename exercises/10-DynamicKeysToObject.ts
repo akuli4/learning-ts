@@ -1,6 +1,8 @@
 const createCache = () => {
-  const cache: Record<string, string> = {};
-
+  // Can be solved by using index signatures
+  const cache: { [index: string]: string } = {};
+  // OR
+  // const cache: Record<string, string> = {};
   const add = (id: string, value: string) => {
     cache[id] = value;
   };
@@ -17,4 +19,4 @@ const createCache = () => {
 };
 
 const cache = createCache();
-cache.cache["123"] = "2";
+cache.cache["2"] = "2";
