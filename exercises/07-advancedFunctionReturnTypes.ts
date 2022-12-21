@@ -1,4 +1,4 @@
-interface User {
+interface IUser {
   id: number;
   firstName: string;
   lastName: string;
@@ -15,14 +15,27 @@ interface Post {
  * How do we ensure that makeUser ALWAYS
  * returns a user?
  */
-const makeUser = () => {
-  return {};
+const makeUser = (): IUser => {
+  return {
+    id: 0,
+    firstName: "Darth",
+    lastName: "Vader",
+    role: "admin",
+    posts: [
+      {
+        id: 2,
+        title: "Where am I?",
+      },
+    ],
+  };
 };
 
+const user = makeUser();
+
 console.log({
-	user.id,
-	user.firstName,
-	user.lastName,
-	user.role,
-	user.posts
-})
+  id: user.id,
+  name: user.firstName,
+  surname: user.lastName,
+  role: user.role,
+  posts: user.posts,
+});
