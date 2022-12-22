@@ -2,7 +2,7 @@
 		Ranker takes in a value and a rank function.
 	Make so that this function uses generic typing.
 */
-interface RankedItems {
+interface RankedItems<TItem> {
 	item: TItem;
 	rank: number;
 }
@@ -11,7 +11,7 @@ const ranker = <TItem>(
 	items: Array<TItem>,
 	rank: (v: TItem) => number
 ): TItem[] => {
-	const ranks = items.map((item) => ({
+	const ranks: RankedItems<TItem>[] = items.map((item) => ({
 		item,
 		rank: rank(item),
 	}));
@@ -19,3 +19,5 @@ const ranker = <TItem>(
 
 	return ranks.map((ranked) => ranked.item);
 };
+
+
