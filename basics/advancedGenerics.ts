@@ -11,7 +11,7 @@ const ranker = <TItem>(
 	items: Array<TItem>,
 	rank: (v: TItem) => number
 ): Array<TItem> => {
-	const ranks: RankedItems<TItem>[] = items.map((item) => ({
+	const ranks: Array<RankedItems<TItem>> = items.map((item) => ({
 		item,
 		rank: rank(item),
 	}));
