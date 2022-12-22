@@ -10,4 +10,5 @@ export function simpleState<T>(val: T): [() => T, (newVal: T) => void] {
 
 // Make so that this function takes any type and returns are typed accordingly.
 
-const [state, setState] = simpleState(2);
+const [state, setState] = simpleState<number | undefined>(undefined);
+setState(2);
