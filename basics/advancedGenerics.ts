@@ -20,4 +20,26 @@ const ranker = <TItem>(
 	return ranks.map((ranked) => ranked.item);
 };
 
+interface Pokemon {
+	name: string;
+	hp: number;
+}
 
+const pokemons: Array<Pokemon> = [
+	{
+		name: "Pikachu",
+		hp: 100,
+	},
+	{
+		name: "Bulbasaur",
+		hp: 90,
+	},
+	{
+		name: "Charizard",
+		hp: 102,
+	},
+];
+
+const ranked_pokemons = ranker(pokemons, (v) => v.hp);
+
+console.log(ranked_pokemons);
