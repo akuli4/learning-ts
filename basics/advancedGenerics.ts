@@ -10,7 +10,7 @@ interface RankedItems<TItem> {
 const ranker = <TItem>(
 	items: Array<TItem>,
 	rank: (v: TItem) => number
-): TItem[] => {
+): Array<TItem> => {
 	const ranks: RankedItems<TItem>[] = items.map((item) => ({
 		item,
 		rank: rank(item),
