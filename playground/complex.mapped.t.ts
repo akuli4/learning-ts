@@ -21,7 +21,7 @@ const pikachu: Pokemon = {
 };
 
 pokemonFight(pikachu, {
-	onHpChange: () => {},
+	onLevelChange: () => {},
 });
 
 console.log(pikachu);
