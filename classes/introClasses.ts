@@ -1,5 +1,11 @@
 /*
 		Build a noSql in-momery style database.
+	Implements keyoword tells ts that a class is using specified interface.
+	Member Visibility
+		Private - accessible only within a given class
+		Protected - parent and child classes can access it
+		Public - available everywhere
+
 */
 
 interface IDatabase {
@@ -12,12 +18,8 @@ interface IPersistable {
 	restoreFromString(storedState: string): void;
 }
 
-/*
-	IMplements keyoword tells ts that this class is using IDatabase interface.
-*/
-
 class Database implements IDatabase {
-	private db: Record<string, string> = {};
+	protected db: Record<string, string> = {};
 
 	get(id: string): string {
 		return this.db[id];
@@ -27,26 +29,16 @@ class Database implements IDatabase {
 	}
 }
 
-const test = new Database();
-test.set("foo", "bar");
-
-// There is an issue now, i can control db directly, private variables fix that behaviour.
-
-test.db["foo"] = "asd";
-console.log(test.get("foo"));
-
-/*
-			There are 3 different member visibility settings
-				Private - accessible only within a given class
-				Protected - parent and child classes can access it
-				Public - available everywhere
-*/
-
-// Create a persistable Database
 class Persistable extends Database implements IPersistable {
-	// Need to return value from db here, but its private?? What to do??
 	saveToString(): string {
 		return JSON.stringify(this.db);
 	}
-	restoreFromString(storedState: string): void {}
+	restoreFromString(storedState: string): void {
+		this.db = JSON.parse(storedState);
+	}
 }
+
+const pers = new Persistable();
+pers.set("foo", "bar");
+pers.set("age", 2);
+console.log(pers.saveToString());
