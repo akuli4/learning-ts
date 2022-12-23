@@ -4,7 +4,7 @@ interface User {
 	email?: string;
 }
 
-const override = (user: User, overrides: Partial<User>): User => {
+const override = (user: User, overrides: OwnPartial<User>): User => {
 	return {
 		...user,
 		...overrides,
@@ -18,3 +18,5 @@ const override = (user: User, overrides: Partial<User>): User => {
 console.log(
 	override({ name: "Alan", id: "1" }, { id: "2", email: "asd@aasd.asd" })
 );
+
+type OwnPartial<T> = { [V in keyof T]?: T[V] };
