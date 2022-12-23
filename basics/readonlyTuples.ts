@@ -15,3 +15,5 @@ const randomData = [{ name: "name", email: "email" }] as const;
 
 randomData[0] = "something"; // TypeScript is crying here
 randomData[0].name = "something"; // TypeScript is crying here
+
+// randomData array is now immutable
