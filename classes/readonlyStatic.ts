@@ -4,7 +4,7 @@
 */
 
 class Dog {
-	constructor(public name: string, public age: number) {}
+	constructor(public readonly name: string, public readonly age: number) {}
 }
 
 const Tanuki = new Dog("Tanuki", 20);
