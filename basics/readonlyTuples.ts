@@ -1,4 +1,4 @@
-const getCursorCoordinates = (): [number, number, number] => {
+const getCursorCoordinates = (): readonly [number, number, number] => {
 	return [
 		Number((Math.random() * 10).toFixed()), // X
 		Number((Math.random() * 10).toFixed()), // Y
