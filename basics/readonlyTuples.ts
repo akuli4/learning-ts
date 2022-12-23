@@ -9,3 +9,9 @@ const getCursorCoordinates = (): readonly [number, number, number] => {
 const cursor = getCursorCoordinates();
 
 cursor[0] = 20; // This should not be possible
+
+// Can also be done this way
+const randomData = [{ name: "name", email: "email" }] as const;
+
+randomData[0] = "something"; // TypeScript is crying here
+randomData[0].name = "something"; // TypeScript is crying here
