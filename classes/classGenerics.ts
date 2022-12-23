@@ -2,24 +2,26 @@
 		Implement generics on Persistable class.
 */
 
-interface IDatabase {
-	set(key: string, value: unknown): void;
-	get(key: string): string;
+interface IDatabase<T> {
+	set(key: string, value: T): void;
+	get(key: string): T;
 }
 interface IPersistable {
 	saveToString(): string;
 	restoreFromString(storedState: string): void;
 }
 
-abstract class Database implements IDatabase {
-	protected db: Record<string, string> = {};
-	set(key: string, value: unknown): void {}
-	get(key: string): string {
+abstract class Database<T> implements IDatabase<T> {
+	protected db: Record<string, T> = {};
+	set(key: string, value: T): void {
+		this.db[key] = value;
+	}
+	get(key: string): T {
 		return this.db[key];
 	}
 }
 
-class PersistableDB extends Database implements IPersistable {
+class PersistableDB<T> extends Database<T> implements IPersistable {
 	saveToString(): string {
 		return JSON.stringify(this.db);
 	}
@@ -27,3 +29,7 @@ class PersistableDB extends Database implements IPersistable {
 		this.db = JSON.parse(storedState);
 	}
 }
+
+const db = new PersistableDB<number>();
+db.set("foo", 10);
+console.log(db.get("foo"));
