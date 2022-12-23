@@ -7,6 +7,11 @@ interface IDatabase {
 	set(id: string, value: any): void;
 }
 
+interface IPersistable {
+	saveToString(): string;
+	restoreFromString(storedState: string): void;
+}
+
 /*
 	IMplements keyoword tells ts that this class is using IDatabase interface.
 */
@@ -36,3 +41,12 @@ console.log(test.get("foo"));
 				Protected - parent and child classes can access it
 				Public - available everywhere
 */
+
+// Create a persistable Database
+class Persistable extends Database implements IPersistable {
+	// Need to return value from db here, but its private?? What to do??
+	saveToString(): string {
+		return JSON.stringify(this.db);
+	}
+	restoreFromString(storedState: string): void {}
+}
