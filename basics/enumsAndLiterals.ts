@@ -3,4 +3,16 @@
 	of loading state.
 */
 
-const isLoading = (state: string) => {};
+// If u wont provide string values each key will be given a number value starting at 0.
+
+enum Loading {
+	preparing = "preparing",
+	loading = "loading",
+	done = "done",
+}
+
+const isLoading = (state: Loading): boolean => {
+	return state === (Loading.loading || Loading.preparing);
+};
+
+console.log(isLoading(Loading.loading));
